@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student</title>
+
+    <style>
+      form {
+        border: 3px solid orange;
+      }
+
+      h1 {
+        text-align: center;
+        width: 30;
+        height: 5px;
+        color: red;
+        margin: 30px 30px;
+        padding: 20px;
+      }
+      button {
+        text-align: left;
+        background-color: white;
+        width: 15%;
+        color: orange;
+        padding: 10px;
+        margin: 10px 400px;
+        border: 3;
+        cursor: pointer;
+        text-align: center;
+      }
+      button:hover {
+        opacity: 0.7;
+      }
+
+     
+      label {
+        color: black;
+        padding: 8px 25px;
+      }
+      input {
+        text-align: center;
+        width: 50%;
+        margin: 8px;
+        padding: 10px 25px;
+        display: inline-block;
+        border: 2px solid green;
+        box-sizing: border-box;
+      }
+
+      #btn {
+        background-color: white;
+        width: 10%;
+        color: orange;
+        padding: 10px 5px;
+        margin: 8px 5px;
+        border: 5;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <div>
+        <h1>Administrator Section</h1>
+
+        <label>Idno: </label>
+        <input type="text" placeholder="Enter ID" name="ID" required />
+        <button id="btn">show</button><button id="btn">Edit</button
+        ><button id="btn">Delete</button><br />
+        <label>name: </label>
+        <input type="Name" placeholder="Enter Name" name="Name" required />
+        <button id="btn">show</button><button id="btn">Edit</button
+        ><button id="btn">Delete</button><br />
+        <br />
+        <label>phone </label>
+        <input
+          type="text"
+          placeholder="Enter Phone no"
+          name="Phone no"
+          required
+        />
+        <button id="btn">show</button><button id="btn">Edit</button
+        ><button id="btn">Delete</button><br />
+        <br />
+        <label>pass: </label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          required
+        />
+        <button id="btn">show</button><button id="btn">Edit</button
+        ><button id="btn">Delete</button><br />
+        <br />
+        <button type="submit" class="btn btn-primary">Add Student</button>
+        </div>
+    </form>
+  </body>
+</html>
