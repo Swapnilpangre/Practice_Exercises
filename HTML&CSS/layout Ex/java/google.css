@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    height: fit-content ;
+    margin: 20px 20px;
+    display: flex;
+    width: 100%;
+    /* position: fixed; */
+}
+
+.gico img{
+    width: 35%;
+}
+
+.searchbox{
+    width: 40%;
+    display: flex;
+    box-shadow:  2px 1px 30px black;
+    border-radius: 20px;
+}
+.searchbox input{
+    width: 75%;
+    border: none;
+    border-radius: 20px;
+    padding: 0px 25px;    
+    height: 39px !important;
+    line-height: 39px;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
+.times{
+    font-size: 30px;
+    line-height: 130%;
+}
+
+.vline{
+    width: 1px;
+    background-color: black;
+    height: 80%;
+    margin: 5px 5px;
+}
+
+.searchbox svg{
+    float: left;
+    width: 3%;
+    margin: 0 8px;
+}
+
+.bln{
+    width:20%;
+}
+
+.rsd{
+    width: 10%;
+    display: flex; 
+
+}
+
+.rsd svg{
+    width: 22%;
+    margin: 0 20px;
+}
+
+.menu{
+    margin: 0 0 0 20%;
+}
+
+.menu ul{
+    display: flex;
+    list-style-type: none;
+}
+
+.menu ul li{
+    margin: 0 10px;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: blue;
+}
+
+.result{
+    margin: 20px  0 0 20%;
+    width: 40%;
+}
+
+.rs{
+    margin: 20px 0;
+}
+
+.rs a{
+    text-decoration: none;
+}
+
+.rs p{
+    text-align: justify;
+}
+
