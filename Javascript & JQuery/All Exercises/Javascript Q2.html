@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Info</title>
+
+    <style>
+      body {
+        float: left;
+        text-align: center;
+      }
+      label {
+        bottom: 20px;
+        float: left;
+        margin-top: 10px;
+      }
+      input {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+      <form action="">
+    <label for="">Student Name :<input type="text" name="username" /></label>
+    <br />
+    <label for="">Student ID : <input type="text" name="userid" /></label><br />
+    <label for="">Passing Year :<input type="text" name="passyear" /></label
+    ><br />
+    <label for="">Colleger Name:<input type="text" name="clgname" /></label
+    ><br />
+    <input type="submit" onclick="info()" />
+</form>
+    <script>
+      function info() {
+        var name = document.getElementsByName("username")[0].value;
+        var id = document.getElementsByName("userid")[0].value;
+        var year = document.getElementsByName("passyear")[0].value;
+        var clg = document.getElementsByName("clgname")[0].value;
+        alert("name "+name +"\n userid "+id +"\n passing year "+year+"\n clg name "+clg)
+      }
+      a=10;
+      b=13;
+      c=a+b;
+      console.log(c);
+    </script>
+  </body>
+</html>
