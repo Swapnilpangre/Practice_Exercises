@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show XML file using AJAX Request</title>
+  </head>
+  <body>
+    <p>XML File Data</p>
+
+    <div>
+      <h3>XMLHTTPRequest</h3>
+      <button onclick="loadcd()"> Get CD</button>
+    </div>
+    <table id="text" style="border-collapse: collapse;" border="1" ;padding:5px;  ></table>
+
+    <script>
+      function loadcd() {
+        var XHTTPR = new XMLHttpRequest();
+
+        XHTTPR.onreadystatechange = () => {
+          if (XHTTPR.readyState == 4 && XHTTPR.status == 200)
+            var table = " <tr><th> ARTIST</th> <th> TITLE</th></tr> ";
+          var xmldoc = XHTTPR.responseXML.getElementsByTagName("CD");
+          for (var i = 0; i < xmldoc.length; i++) {
+            table +=
+              "<tr><td>" +
+              xmldoc[i].getElementsByTagName("ARTIST")[0].childNodes[0]
+                .nodeValue +
+              "</td>" +
+              "<td>" +
+              xmldoc[i].getElementsByTagName("TITLE")[0].childNodes[0]
+                .nodeValue +
+              "</td></tr>";
+          }
+          document.getElementById("text").innerHTML =table;
+        };
+
+        XHTTPR.open("get","demo.xml", true);
+        XHTTPR.send();
+      }
+    </script>
+  </body>
+</html>

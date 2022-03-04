@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="main-body">
+		<nav id="navbar">
+			<header>JS Documentation</header>
+			<a href="#Intro" class="nav-link">
+				Introduction</a>
+			<a href="#what" class="nav-link">
+				What you should know</a>
+			<a href="#Javascript" class="nav-link">
+				Javascript and Java</a>
+			<a href="#HelloWorld" class="nav-link">
+				Hello world</a>
+			<a href="#variables" class="nav-link">
+				Declaring variables</a>
+			
+		</nav>
+
+		<main id="main-doc">
+			<section class="main-section" id="Intro">
+				<header>
+					What is JavaScript
+				</header>
+				<p>
+					JavaScript (js) is a light-weight object-oriented programming language which is used by several websites for scripting the webpages. It is an interpreted, full-fledged programming language that enables dynamic interactivity on websites when applied to an HTML document. It was introduced in the year 1995 for adding programs to the webpages in the Netscape Navigator browser. Since then, it has been adopted by all other graphical web browsers. With JavaScript, users can build modern web applications to interact directly without reloading the page every time. The traditional website uses js to provide several forms of interactivity and simplicity.
+				</p>
+				
+				
+			
+			</section>
+
+			<section class="main-section" id="what">
+				<header>
+					History of JavaScript
+				</header>
+				<p>
+					In 1993, Mosaic, the first popular web browser, came into existence. In the year 1994, Netscape was founded by Marc Andreessen. He realized that the web needed to become more dynamic. Thus, a 'glue language' was believed to be provided to HTML to make web designing easy for designers and part-time programmers. Consequently, in 1995, the company recruited Brendan Eich intending to implement and embed Scheme programming language to the browser. But, before Brendan could start, the company merged with Sun Microsystems for adding Java into its Navigator so that it could compete with Microsoft over the web technologies and platforms. Now, two languages were there: Java and the scripting language. Further, Netscape decided to give a similar name to the scripting language as Java's. It led to 'Javascript'. Finally, in May 1995, Marc Andreessen coined the first code of Javascript named 'Mocha'. Later, the marketing team replaced the name with 'LiveScript'. But, due to trademark reasons and certain other reasons, in December 1995, the language was finally renamed to 'JavaScript'. From then, JavaScript came into existence.
+				</p>
+				
+			</section>
+
+			<section class="main-section" id="Javascript">
+				<header>
+					Compiled vs. Interpreted
+				</header>
+				<p>
+					Compiled languages like Java checks the code of an entire project while optimizing and converting scribbles into byte code that can be read by the Java Virtual Machine (JVM) at a later date. It catches a healthy amount of syntactical errors and alerts coders to that effect at the compile time.
+
+From that point on, the coder operates with a compressed package of byte codes like Java Archive (JAR) or Web Archive (WAR) in case of a web application. This package then can be executed by a virtual machine or a web container that opens it, loads it in memory, finds an entry point, and brings it to life on somebody’s desktop or server. This does not prevent you from making programming logic errors, but at the very least you have an opportunity to correct all of the syntactical errors right out of the gate.
+
+Security of the intellectual property is also an issue solved by many compiled languages. Java compilation does not intrinsically protect your code from decompilation, but there are ways to protect your output outlined in various resources on the Internet.
+
+Interpreted languages like JavaScript read through your source code at run time and interpret it as they go. Interpreters have become so fast and powerful that the performance hit from the action of interpretation is barely noticeable.
+
+On the one hand, it provides for many “creative” solutions and dynamic manipulations of the existing code base. On the other hand, it promotes a culture of shortcuts, “duct taping,” clever code and obscure solutions. It takes a great deal of organizational culture and discipline to build and maintain large projects in JavaScript.
+
+As for security of intellectual property, there is really no good way to make your code both executable and inaccessible. There are “minifiers,” “uglyfiers” and other obfuscation packages, but none of them will scramble your code enough to be ultimately unreadable. The reason for it is that the interpreter needs to be able to read your code at the time of execution. Obfuscation package can get rid of all spaces, carriage returns and tabs, and generally make it look like a chunk of mess; but ultimately, it has to keep a lot of original elements in.
+				</p>
+				
+			</section>
+
+			<section class="main-section" id="HelloWorld">
+				<header>
+					Hello World
+				</header>
+				<pre>
+					&lt;script type="text/javascript"&gt;
+						
+	    
+		  <script language = "javascript" type = "text/javascript">
+			 <!--
+				document.write("Hello World!")
+			  //-->
+		  </script>      
+	  
+	
+					
+				</pre>	
+			</section>
+
+			<section class="main-section" id="variables">
+				<header>
+					Variables
+				</header>
+
+				<p>
+					A JavaScript variable is simply a name of storage location. There are two types of variables in JavaScript : local variable and global variable.
+
+There are some rules while declaring a JavaScript variable (also known as identifiers).
+				</p>
+
+				<p>
+					<b>1.Name must start with a letter (a to z or A to Z), underscore( _ ), or dollar( $ ) sign.
+					<br>
+					<b>2.After first letter we can use digits (0 to 9), for example value1.
+					<br>
+
+					</b>3.JavaScript variables are case sensitive, for example x and X are different variables.
+				</p>
+			</section>
+
+			
+		</main>
+	</div>
+</body>
+
+</html>
