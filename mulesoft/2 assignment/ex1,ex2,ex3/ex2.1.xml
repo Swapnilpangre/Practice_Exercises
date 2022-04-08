@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e9db3b9a-b685-40ae-8c5b-2e10ae2b84b7" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="5064fce3-a8a3-4845-80e8-ce9e49dca478">
+		<http:request-connection host="localhost" port="8081" />
+	</http:request-config>
+	<flow name="ex2.1Flow" doc:id="f395e348-cf08-4333-bfb6-15410aa77be1" >
+		<http:listener doc:name="Listener" doc:id="36a74de9-f44e-4de4-a0c7-5c310cb72abc" config-ref="HTTP_Listener_config" path="/userdata" allowedMethods="GET"/>
+		<set-variable value="#[upper(attributes.queryParams.name)]" doc:name="Set Variable" doc:id="9b9dbd4c-75de-4343-8746-c98f9efb5433" variableName="name"/>
+		<set-variable value="#[upper(attributes.queryParams.location)]" doc:name="Set Variable" doc:id="f0194ac7-c426-4ea4-b988-da3db6dec4c0" variableName="location"/>
+		<ee:transform doc:name="Transform Message" doc:id="d8f9e1d2-c53d-419e-b6dd-2c46d1e65119" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"WELCOME " ++ (vars.name default"") ++ " YOUR  LOCATION IS " ++ (vars.location default"INDIA")]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
