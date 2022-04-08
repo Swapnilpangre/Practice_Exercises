@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="24b50d1a-8bd2-4593-93a9-2584c35e888d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="f8efc687-5ede-4b07-9e80-57cea1f53832" >
+		<db:my-sql-connection host="127.0.0.1" port="3306" user="root" password="*assw6rd" database="test1" />
+	</db:config>
+	<flow name="muleproject3Flow" doc:id="ea286120-b71b-4a0a-b471-d1387424aa21" >
+		<http:listener doc:name="Listener" doc:id="975789a3-950f-4e87-9053-d7c07e31fcff" config-ref="HTTP_Listener_config" path="/users"/>
+		<db:select doc:name="Select" doc:id="40c7ae11-dc57-48ea-8239-613d94b6e2bc" config-ref="Database_Config">
+			<db:sql ><![CDATA[select * from test]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="6b0596d1-39cd-4016-935d-c8c2ac8112b6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="muleproject3Flow1" doc:id="da22ef9a-7d1d-4968-aa19-e2b51649fb47" >
+		<http:listener doc:name="Listener" doc:id="8332aef9-e297-48e9-863f-f0db17470d42" config-ref="HTTP_Listener_config" path="/users" allowedMethods="POST"/>
+		<db:insert doc:name="Insert" doc:id="c525c5d2-17ba-4e57-93c9-8d6469e279d9" config-ref="Database_Config">
+			<db:sql ><![CDATA[insert into test values(:Id,:firstname,:lastname)]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	'Id': attributes.queryParams.id,
+	'firstname':attributes.queryParams.firstname,
+	'lastname':attributes.queryParams.lastname
+}]]]></db:input-parameters>
+		</db:insert>
+		<ee:transform doc:name="Transform Message" doc:id="f01442b3-f82b-45ac-ad7e-1d8f20f1de27" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"data insert"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="muleproject3Flow2" doc:id="d1f1937f-0cd8-4289-96bd-cffce31a0ddb" >
+		<http:listener doc:name="Listener" doc:id="4d108300-b4da-4027-a896-a05d0a977813" config-ref="HTTP_Listener_config" path="/users" allowedMethods="DELETE" responseStreamingMode="NEVER"/>
+		<db:delete doc:name="Delete" doc:id="74719f17-532d-4692-9cb8-e130953dcb60" config-ref="Database_Config">
+			<db:sql ><![CDATA[delete from test where id=:ID]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'ID' : attributes.queryParams.id}]]]></db:input-parameters>
+		</db:delete>
+		<ee:transform doc:name="Transform Message" doc:id="a0a1c7b3-b564-4fe1-913a-4e9e8955bbc2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"Data delete"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="muleproject3Flow3" doc:id="e7426361-0f9b-42d9-aea8-7b2f62a59640" >
+		<http:listener doc:name="Listener" doc:id="c68a034e-9fdb-4d07-a2c0-cfc79a1f3206" config-ref="HTTP_Listener_config" path="/users" allowedMethods="PUT"/>
+		<db:update doc:name="Update" doc:id="91dd63a0-868d-4367-b649-f468ade199bc" config-ref="Database_Config">
+			<db:sql ><![CDATA[update test set firstname=:firstname,lastname=:lastname where id=:Id]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	'Id': attributes.queryParams.id,
+	'firstname':attributes.queryParams.firstname,
+	'lastname':attributes.queryParams.lastname
+}]]]></db:input-parameters>
+		</db:update>
+		<ee:transform doc:name="Transform Message" doc:id="e8cc2e0e-f69a-4318-b9d6-0f31b7b1d99b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"data update"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
